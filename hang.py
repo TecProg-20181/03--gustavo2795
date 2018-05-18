@@ -21,6 +21,10 @@ def loadWords():
 
 
 def isWordGuessed(secretWord, lettersGuessed):
+    # asserts to validate parameters
+    assert secretWord is not ' ', 'secretWord can not be null'
+    assert isinstance(secretWord, basestring), 'secretWord needs to be string'
+
     secretLetters = []
 
     for letter in secretWord:
@@ -44,7 +48,7 @@ def getAvailableLetters():
     return available
 
 def hangman(secretWord):
-
+    # asserts to validate parameters
     assert secretWord is not ' ', 'secretWord can not be null'
     assert isinstance(secretWord, basestring), 'secretWord needs to be string'
 
