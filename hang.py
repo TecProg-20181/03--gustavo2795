@@ -22,17 +22,11 @@ def loadWords():
 def isWordGuessed(secretWord, lettersGuessed):
     secretLetters = []
 
-#    for letter in secretWord:
-#        if letter in secretLetters:
-#            secretLetters.append(letter)
-#        else:
-#            pass
-
     for letter in secretWord:
-        if letter in lettersGuessed:
-            pass
-        else:
+        if letter not in lettersGuessed:
             return False
+        else:
+            pass
 
     return True
 
@@ -47,7 +41,6 @@ def getAvailableLetters():
     import string
     # 'abcdefghijklmnopqrstuvwxyz'
     available = string.ascii_lowercase
-
 
     return available
 
