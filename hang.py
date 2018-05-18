@@ -45,9 +45,12 @@ def getAvailableLetters():
 
 def hangman(secretWord):
 
+    assert secretWord is not ' ', 'secretWord can not be null'
+    assert isinstance(secretWord, basestring), 'secretWord needs to be string'
+
     guesses = MAXIMUM_GUESSES
     lettersGuessed = []
-    print 'Welcome to the game, Hangam!'
+    print 'Welcome to the game, Hangman!'
     print 'I am thinking of a word that is', len(secretWord), ' letters long.'
     print '-------------'
 
