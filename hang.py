@@ -1,21 +1,22 @@
 import random
 import string
 
-WORDLIST_FILENAME = "palavras.txt"
+WORDLIST_FILENAME = "words.txt"
+MAXIMUM_GUESSES = 8
 
 def loadWords():
     """
     Depending on the size of the word list, this function may
     take a while to finish.
     """
-    print "Loading word list from file..."
+    print 'Loading word list from file...'
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r', 0)
     # line: string
     line = inFile.readline()
     # wordlist: list of strings
     wordlist = string.split(line)
-    print "  ", len(wordlist), "words loaded."
+    print '  ', len(wordlist), 'words loaded.'
     return random.choice(wordlist)
 
 
@@ -31,9 +32,7 @@ def isWordGuessed(secretWord, lettersGuessed):
     return True
 
 def getGuessedWord():
-
      guessed = ''
-
 
      return guessed
 
@@ -46,13 +45,13 @@ def getAvailableLetters():
 
 def hangman(secretWord):
 
-    guesses = 8
+    guesses = MAXIMUM_GUESSES
     lettersGuessed = []
     print 'Welcome to the game, Hangam!'
     print 'I am thinking of a word that is', len(secretWord), ' letters long.'
     print '-------------'
 
-    while  isWordGuessed(secretWord, lettersGuessed) == False and guesses >0:
+    while isWordGuessed(secretWord, lettersGuessed) is False and guesses > 0:
         print 'You have ', guesses, 'guesses left.'
 
         available = getAvailableLetters()
@@ -84,7 +83,7 @@ def hangman(secretWord):
 
             print 'Good Guess: ', guessed
         else:
-            guesses -=1
+            guesses -= 1
             lettersGuessed.append(letter)
 
             guessed = getGuessedWord()
@@ -98,13 +97,10 @@ def hangman(secretWord):
         print '------------'
 
     else:
-        if isWordGuessed(secretWord, lettersGuessed) == True:
+        if isWordGuessed(secretWord, lettersGuessed) is True:
             print 'Congratulations, you won!'
         else:
             print 'Sorry, you ran out of guesses. The word was ', secretWord, '.'
-
-
-
 
 secretWord = loadWords().lower()
 hangman(secretWord)
